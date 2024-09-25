@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_25_111334) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_25_201931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,12 +19,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_25_111334) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_animals_on_name", unique: true
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "content"
+    t.integer "love_point"
+    t.integer "diligence_point"
+    t.integer "freedom_point"
+    t.integer "adventure_point"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id", "content"], name: "index_options_on_question_id_and_content", unique: true
+    t.index ["question_id"], name: "index_options_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_questions_on_title", unique: true
   end
 
+  add_foreign_key "options", "questions"
 end
