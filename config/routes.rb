@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "top_pages#index"
+
+  resources :finishes, only: [:index]
+  resources :questions, only: %i[index create update]
 end
