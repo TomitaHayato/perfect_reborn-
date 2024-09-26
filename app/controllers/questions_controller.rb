@@ -13,7 +13,8 @@ class QuestionsController < ApplicationController
       freedom: 0,
       adventure: 0
     }
-    session[:question_ids] = Question.order("RANDOM()").limit(4).pluck(:id)
+    question_num = rand(4..8)
+    session[:question_ids] = Question.order("RANDOM()").limit(question_num).pluck(:id)
     redirect_to questions_path
   end
 
