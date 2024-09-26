@@ -1,0 +1,13 @@
+<div class="min-h-screen bg-cover bg-[url('god.jpg')]">
+  <div class="w-6/12 mx-auto py-40">
+    <div class="flex  flex-col justify-center bg-white bg-opacity-50">
+      <p class="font-semibold text-xl p-3">あなたの来世は...</p>
+      <p class="font-semibold text-5xl p-3 text-center">「<%= @animal.name %>」</p>
+      <p class="font-semibold text-xl p-3 text-center"><%= @animal.comment %></p>
+    </div>
+    <div class="text-center mx-auto my-6">
+      <%= link_to "終了", root_path, class: "btn btn-lg rounded-lg bg-gradient-to-tl from-cyan-400 to-cyan-100 hover:border-blue-700" %>
+    </div>
+    
+  </div>
+</div>
