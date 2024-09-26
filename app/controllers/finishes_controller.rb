@@ -7,8 +7,14 @@ class FinishesController < ApplicationController
       max_status_array.push(status.to_s) if point == max_point
     end
 
+    p max_status_array
+
     animal_name = users_animal_name(max_status_array)
+    p animal_name
     @animal = Animal.find_by(name: animal_name)
+    p @animal
+    session[:status_points] = nil
+    session[:question_ids] = nil
   end
 
   private
@@ -37,7 +43,7 @@ class FinishesController < ApplicationController
                   when ['freedom', 'adventure']
                     'ハト'
                   when ['love', 'diligence', 'freedom']
-                    'シロイルカ'
+                    'ペンギン'
                   when ['diligence', 'freedom', 'adventure']
                     'アザラシ'
                   when ['love', 'freedom', 'adventure']

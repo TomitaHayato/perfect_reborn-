@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
     session[:status_points]['adventure'] += option.adventure_point
 
     p session[:status_points] # デバック
+    p session[:question_ids]
 
     if session[:question_ids].empty?
       redirect_to finishes_path

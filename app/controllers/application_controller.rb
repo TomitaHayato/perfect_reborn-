@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
 
   def session_check
-    redirect_to root_path unless session[:status_points]
+    redirect_to root_path if session[:status_points].nil?
   end
 end

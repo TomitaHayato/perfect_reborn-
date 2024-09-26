@@ -1,12 +1,12 @@
 <div class="bg-white bg-opacity-20 min-h-screen">
   <div class="text-center pt-16 ">
-    <h2 class="text-3xl font-bold"><%= @question.title %></h2>
+    <h2 class="text-3xl font-bold">Q. <%= @question.title %></h2>
 
     <%= form_with url: question_path(@question), method: :patch do |f| %>
 
       <% @question.options.shuffle.each do |option| %>
         <div class="my-5 p-3 bg-yellow-100 text-black w-4/12 mx-auto text-lg text-start">
-          <%= f.radio_button :option_id, "#{option.id}", class: "radio choice" %>
+          <%= f.radio_button :option_id, "#{option.id}", class: "radio choice", required: true %>
           <%= f.label :option_id, option.content %>
         </div>
 
