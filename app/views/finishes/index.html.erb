@@ -5,6 +5,9 @@
       <p class="font-semibold text-5xl p-3 text-center">「<%= @animal.name %>」</p>
       <p class="font-semibold text-xl p-3 text-center"><%= @animal.comment %></p>
     </div>
-    <%= link_to "終了", root_path, class: "btn btn-lg rounded-lg bg-gradient-to-tl from-cyan-400 to-cyan-100 hover:border-blue-700" %>
+    <div class="text-center mx-auto my-6">
+      <%= link_to "終了", root_path, class: "btn btn-lg rounded-lg bg-gradient-to-tl from-cyan-400 to-cyan-100 hover:border-blue-700" %>
+    </div>
+    
   </div>
 </div>

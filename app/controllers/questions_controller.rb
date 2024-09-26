@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
       freedom: 0,
       adventure: 0
     }
-    session[:question_ids] = Question.all.pluck(:id).shuffle
+    session[:question_ids] = Question.order("RANDOM()").limit(4).pluck(:id)
     redirect_to questions_path
   end
 
@@ -25,8 +25,8 @@ class QuestionsController < ApplicationController
     session[:status_points]['freedom'] += option.freedom_point
     session[:status_points]['adventure'] += option.adventure_point
 
-    p session[:status_points] # デバック
-    p session[:question_ids]
+    # p session[:status_points] # デバック
+    # p session[:question_ids]
 
     if session[:question_ids].empty?
       redirect_to finishes_path
