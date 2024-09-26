@@ -14,25 +14,23 @@ class QuestionsController < ApplicationController
       adventure: 0
     }
     session[:question_ids] = Question.all.pluck(:id).shuffle
-
     redirect_to questions_path
   end
 
   def update
-    session[:status_points][:love] += option_params[:love_point]
-    session[:status_points][:diligence] += option_params[:diligence_point]
-    session[:status_points][:freedom] += option_params[:freedom_point]
-    session[:status_points][:adventure] += option_params[:adventure_point]
+    option = Option.find(params[:option_id].to_i)
+
+    session[:status_points]['love'] += option.love_point
+    session[:status_points]['diligence'] += option.diligence_point
+    session[:status_points]['freedom'] += option.freedom_point
+    session[:status_points]['adventure'] += option.adventure_point
+
+    p session[:status_points] # デバック
+
     if session[:question_ids].empty?
       redirect_to finishes_path
     else
       redirect_to questions_path
     end
-  end
-
-  private
-
-  def option_params
-    params.require(:option).permit(:love_point, :diligence_point, :freedom_point, :adventure_point)
   end
 end
